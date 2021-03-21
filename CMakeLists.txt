@@ -10,8 +10,8 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(Catch2)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 11)
 include_directories(${CMAKE_SOURCE_DIR}/include)
-add_executable(mstl main.cpp test/test_vector.cpp test/test_macros.h test/test_allocator.h test/test_iterators.h test/min_allocator.h test/asan_testing.h include/utility.h)
+add_executable(mstl test/vector/test_insert.cpp test/support/test_macros.h test/support/test_allocator.h test/support/test_iterators.h test/support/min_allocator.h test/support/asan_testing.h include/utility.h test/utility/test_move.cpp test/utility/test_move_if_noexcept.cpp test/utility/test_forward.cpp test/entry.cpp)
 
 target_link_libraries(mstl PRIVATE Catch2::Catch2)

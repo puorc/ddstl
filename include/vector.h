@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <type_traits>
+#include <limits>
 
 template<class T, class Allocator = std::allocator<T>>
 class vector {

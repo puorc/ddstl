@@ -10,6 +10,7 @@
 #define ASAN_TESTING_H
 
 #include "test_macros.h"
+#include "vector.h"
 
 #if TEST_HAS_FEATURE(address_sanitizer)
 extern "C" int __sanitizer_verify_contiguous_container
@@ -25,9 +26,9 @@ bool is_contiguous_container_asan_correct ( const std::vector<T, Alloc> &c )
 }
 
 #else
-template <typename T, typename Alloc>
-bool is_contiguous_container_asan_correct ( const std::vector<T, Alloc> &)
-{
+
+template<typename T, typename Alloc>
+bool is_contiguous_container_asan_correct(const ddstl::vector<T, Alloc> &) {
     return true;
 }
 #endif

@@ -5,7 +5,7 @@
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
 //===----------------------------------------------------------------------===//
-
+#pragma once
 #ifndef MIN_ALLOCATOR_H
 #define MIN_ALLOCATOR_H
 

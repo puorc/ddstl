@@ -5,22 +5,10 @@
 #include <cstdio>
 #include <cstring>
 #include "utility.h"
-#include <iostream>
+#include "ops.h"
 
 namespace ddstl {
-    struct __false_type {
-    };
-
-    // TODO: is this working?
-    template<typename _Tp>
-    struct __is_move_iterator {
-        enum {
-            __value = 0
-        };
-        typedef __false_type __type;
-    };
-
-    template<bool IsMove, bool IsSimple, typename Category>
+    template<bool IsSimple, typename Category>
     struct _copy {
         template<class InputIt, class OutputIt>
         static OutputIt copy(InputIt first, InputIt last, OutputIt d_first) {
@@ -33,25 +21,10 @@ namespace ddstl {
         }
     };
 
-    template<bool IsSimple, typename Category>
-    struct _copy<true, IsSimple, Category> {
-        template<class InputIt, class OutputIt>
-        static OutputIt copy(InputIt first, InputIt last, OutputIt d_first) {
-            while (first != last) {
-                *d_first = ddstl::move(*first);
-                ++d_first;
-                ++first;
-            }
-            return d_first;
-        }
-    };
-
-    template<bool IsMove>
-    struct _copy<IsMove, true, std::random_access_iterator_tag> {
+    template<>
+    struct _copy<true, std::random_access_iterator_tag> {
         template<class T>
         static T *copy(const T *first, const T *last, T *d_first) {
-            using assignable = std::conditional<IsMove, std::is_move_assignable<T>, std::is_copy_assignable<T>>;
-            static_assert(assignable::type::value, "type is not assignable");
             std::ptrdiff_t count = last - first;
             if (count > 0) {
                 memmove(d_first, first, sizeof(T) * count);
@@ -69,7 +42,32 @@ namespace ddstl {
                              && std::is_pointer<InputIt>::value
                              && std::is_pointer<OutputIt>::value
                              && std::is_same<IValue, OValue>::value);
-        return _copy<__is_move_iterator<InputIt>::__value, simple, category>::copy(first, last, d_first);
+        return _copy<simple, category>::copy(first, last, d_first);
+    }
+
+    template<class InputIt, class UnaryPredicate>
+    typename std::iterator_traits<InputIt>::difference_type
+    count_if_aux(InputIt first, InputIt last, UnaryPredicate p) {
+        typename std::iterator_traits<InputIt>::difference_type count = 0;
+        while (first != last) {
+            if (p(first)) {
+                ++count;
+            }
+            ++first;
+        }
+        return count;
+    }
+
+    template<class InputIt, class UnaryPredicate>
+    typename std::iterator_traits<InputIt>::difference_type
+    count_if(InputIt first, InputIt last, UnaryPredicate p) {
+        return count_if_aux(first, last, iter_pred_functor<UnaryPredicate>(p));
+    }
+
+    template<class InputIt, class T>
+    typename std::iterator_traits<InputIt>::difference_type
+    inline count(InputIt first, InputIt last, const T &value) {
+        return count_if_aux(first, last, ddstl::iter_equal_value_functor<T>(value));
     }
 }
 

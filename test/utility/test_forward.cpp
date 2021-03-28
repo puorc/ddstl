@@ -36,13 +36,9 @@ namespace test_forward {
                 A();
 
     }
-}
-
-using namespace test_forward;
-
 
 #if TEST_STD_VER > 11
-constexpr bool test_constexpr_forward() {
+    constexpr bool test_constexpr_forward() {
     int x = 42;
     const int cx = 101;
     return ddstl::forward<int&>(x)        == 42
@@ -55,8 +51,10 @@ constexpr bool test_constexpr_forward() {
         && ddstl::forward<const int>(cx)  == 101;
 }
 #endif
+}
 
 TEST_CASE("test std::forward", "") {
+    using namespace test_forward;
     A a;
     const A ca = A();
 

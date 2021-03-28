@@ -28,7 +28,24 @@ namespace ddstl {
         }
     };
 
+    template<typename BiPredicate>
+    struct iter_bi_pred_functor {
+        BiPredicate &m_predicate;
 
+        explicit iter_bi_pred_functor(BiPredicate &pred) : m_predicate(pred) {}
+
+        template<typename ForwardIt1, typename ForwardIt2>
+        bool operator()(ForwardIt1 it1, ForwardIt2 it2) {
+            return bool(m_predicate(*it1, *it2));
+        }
+    };
+
+    struct iter_bi_equal_functor {
+        template<typename Value1, typename Value2>
+        bool operator()(Value1 v1, Value2 v2) {
+            return v1 == v2;
+        }
+    };
 }
 
 #endif //MSTL_OPS_H

@@ -52,11 +52,9 @@ namespace test_move {
 
         A &operator=(const A &) = delete;
     };
-}
-using namespace test_move;
 
 #if TEST_STD_VER > 11
-constexpr bool test_constexpr_move() {
+    constexpr bool test_constexpr_move() {
     int y = 42;
     const int cy = y;
     return std::move(y) == 42
@@ -65,8 +63,11 @@ constexpr bool test_constexpr_move() {
         && std::move(static_cast<int const&&>(y)) == 42;
 }
 #endif
+}
 
 TEST_CASE("test std::move", "") {
+    using namespace test_move;
+
     { // Test return type and noexcept.
         static_assert(std::is_same<decltype(ddstl::move(x)), int &&>::value, "");
         ASSERT_NOEXCEPT(ddstl::move(x));

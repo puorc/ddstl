@@ -40,14 +40,16 @@ namespace test_count_if {
 #endif
 }
 
-using namespace test_count_if;
-
 TEST_CASE("test count_if pass", "") {
+    using namespace test_count_if;
     int ia[] = {0, 1, 2, 2, 0, 1, 2, 3};
     const unsigned sa = sizeof(ia) / sizeof(ia[0]);
     assert(ddstl::count_if(input_iterator<const int *>(ia),
                            input_iterator<const int *>(ia + sa),
                            eq(2)) == 3);
+    assert(ddstl::count_if(input_iterator<const int *>(ia),
+                           input_iterator<const int *>(ia + sa),
+                           [](int x) { return x == 2; }) == 3);
     assert(ddstl::count_if(input_iterator<const int *>(ia),
                            input_iterator<const int *>(ia + sa),
                            eq(7)) == 0);

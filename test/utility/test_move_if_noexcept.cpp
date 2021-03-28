@@ -42,9 +42,8 @@ namespace test_move_if_noexcept {
     };
 }
 
-using namespace test_move_if_noexcept;
-
 TEST_CASE("test ddstl::move_if_noexcept", "") {
+    using namespace test_move_if_noexcept;
     int i = 0;
     const int ci = 0;
 

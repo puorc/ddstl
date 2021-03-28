@@ -37,9 +37,8 @@ namespace test_access {
     }
 }
 
-using namespace test_access;
-
 TEST_CASE("test vector [] and at") {
+    using namespace test_access;
     SECTION("aaaaresizing bigger changes size and capacity") {
         using namespace test_access;
         typedef ddstl::vector<int> C;

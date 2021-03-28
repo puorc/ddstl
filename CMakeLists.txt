@@ -6,12 +6,41 @@ Include(FetchContent)
 FetchContent_Declare(
         Catch2
         GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-        GIT_TAG        v2.13.1)
+        GIT_TAG v2.13.1)
 
 FetchContent_MakeAvailable(Catch2)
 
 set(CMAKE_CXX_STANDARD 11)
-include_directories(${CMAKE_SOURCE_DIR}/include)
-add_executable(mstl test/support/test_macros.h test/support/test_allocator.h test/support/test_iterators.h test/support/min_allocator.h test/support/asan_testing.h include/utility.h test/utility/test_move.cpp test/utility/test_move_if_noexcept.cpp test/utility/test_forward.cpp test/entry.cpp test/vector/test_access.cpp test/vector/test_push_back.cpp include/algorithm.h test/algorithm/test_copy.cpp include/ops.h test/algorithm/test_count.cpp test/algorithm/test_count_if.cpp test/algorithm/test_find.cpp test/algorithm/test_find_if.cpp test/algorithm/test_find_if_not.cpp include/iterator.h test/iterator/test_distance.cpp test/algorithm/test_find_first_of.cpp test/algorithm/test_find_if_of_pred.cpp test/algorithm/test_search.cpp test/algorithm/test_search_pred.cpp test/algorithm/test_adjacent_find.cpp test/algorithm/test_adjacent_find_pred.cpp test/algorithm/test_search_n.cpp test/algorithm/test_search_n_pred.cpp test/support/user_defined_integral.h)
+
+add_executable(mstl
+        test/utilities/utility/forward/test_move.cpp
+        test/utilities/utility/forward/test_move_if_noexcept.cpp
+        test/utilities/utility/forward/test_forward.cpp
+        test/entry.cpp
+        test/vector/test_access.cpp
+        test/vector/test_push_back.cpp
+        test/algorithms/alg.modifying.operations/alg.copy/test_copy.cpp
+        test/algorithms/alg.nonmodifying/alg.count/test_count.cpp
+        test/algorithms/alg.nonmodifying/alg.count/test_count_if.cpp
+        test/algorithms/alg.nonmodifying/alg.find/test_find.cpp
+        test/algorithms/alg.nonmodifying/alg.find/test_find_if.cpp
+        test/algorithms/alg.nonmodifying/alg.find/test_find_if_not.cpp
+        test/iterators/iterator.primitives/iterator.operations/test_distance.cpp
+        test/algorithms/alg.nonmodifying/alg.find.first.of/test_find_first_of.cpp
+        test/algorithms/alg.nonmodifying/alg.find.first.of/test_find_first_of_pred.cpp
+        test/algorithms/alg.nonmodifying/alg.search/test_search.cpp
+        test/algorithms/alg.nonmodifying/alg.search/test_search_pred.cpp
+        test/algorithms/alg.nonmodifying/alg.adjacent.find/test_adjacent_find.cpp
+        test/algorithms/alg.nonmodifying/alg.adjacent.find/test_adjacent_find_pred.cpp
+        test/algorithms/alg.nonmodifying/alg.search/test_search_n.cpp
+        test/algorithms/alg.nonmodifying/alg.search/test_search_n_pred.cpp
+        test/algorithms/alg.nonmodifying/alg.find.end/test_find_end.cpp
+        test/algorithms/alg.nonmodifying/alg.find.end/test_find_end_pred.cpp)
+
+target_include_directories(mstl
+        PRIVATE
+        ${PROJECT_SOURCE_DIR}/include
+        ${PROJECT_SOURCE_DIR}/test/support
+        )
 
 target_link_libraries(mstl PRIVATE Catch2::Catch2)

@@ -6,7 +6,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-// <algorithm>
+// <algorithms>
 
 // template<InputIterator Iter, Predicate<auto, Iter::value_type> Pred>
 //   requires CopyConstructible<Pred>
@@ -18,8 +18,8 @@
 #include <functional>
 #include <cassert>
 
-#include "../support/test_macros.h"
-#include "../support/test_iterators.h"
+#include "test_macros.h"
+#include "test_iterators.h"
 
 namespace test_find_if {
     struct eq {

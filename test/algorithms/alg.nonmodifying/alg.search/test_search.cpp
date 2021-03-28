@@ -6,7 +6,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-// <algorithm>
+// <algorithms>
 
 // template<ForwardIterator Iter1, ForwardIterator Iter2>
 //   requires HasEqualTo<Iter1::value_type, Iter2::value_type>
@@ -21,8 +21,8 @@
 #include <cassert>
 #include "catch2/catch.hpp"
 
-#include "../support/test_macros.h"
-#include "../support/test_iterators.h"
+#include "test_macros.h"
+#include "test_iterators.h"
 
 namespace test_search {
     struct MySearcherC {

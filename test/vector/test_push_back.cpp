@@ -18,34 +18,34 @@
 #include "../support/asan_testing.h"
 
 TEST_CASE("test vector push back") {
-    SECTION("resizing bigger changes size and capacity") {
-        ddstl::vector<int> c;
-        c.push_back(0);
-        assert(c.size() == 1);
-        assert(is_contiguous_container_asan_correct(c));
-        for (int j = 0; static_cast<std::size_t>(j) < c.size(); ++j)
-            assert(c[j] == j);
-        c.push_back(1);
-        assert(c.size() == 2);
-        assert(is_contiguous_container_asan_correct(c));
-        for (int j = 0; static_cast<std::size_t>(j) < c.size(); ++j)
-            assert(c[j] == j);
-        c.push_back(2);
-        assert(c.size() == 3);
-        assert(is_contiguous_container_asan_correct(c));
-        for (int j = 0; static_cast<std::size_t>(j) < c.size(); ++j)
-            assert(c[j] == j);
-        c.push_back(3);
-        assert(c.size() == 4);
-        assert(is_contiguous_container_asan_correct(c));
-        for (int j = 0; static_cast<std::size_t>(j) < c.size(); ++j)
-            assert(c[j] == j);
-        c.push_back(4);
-        assert(c.size() == 5);
-        assert(is_contiguous_container_asan_correct(c));
-        for (int j = 0; static_cast<std::size_t>(j) < c.size(); ++j)
-            assert(c[j] == j);
-    }
+//    SECTION("resizing bigger changes size and capacity") {
+//        ddstl::vector<int> c;
+//        c.push_back(0);
+//        assert(c.size() == 1);
+//        assert(is_contiguous_container_asan_correct(c));
+//        for (int j = 0; static_cast<std::size_t>(j) < c.size(); ++j)
+//            assert(c[j] == j);
+//        c.push_back(1);
+//        assert(c.size() == 2);
+//        assert(is_contiguous_container_asan_correct(c));
+//        for (int j = 0; static_cast<std::size_t>(j) < c.size(); ++j)
+//            assert(c[j] == j);
+//        c.push_back(2);
+//        assert(c.size() == 3);
+//        assert(is_contiguous_container_asan_correct(c));
+//        for (int j = 0; static_cast<std::size_t>(j) < c.size(); ++j)
+//            assert(c[j] == j);
+//        c.push_back(3);
+//        assert(c.size() == 4);
+//        assert(is_contiguous_container_asan_correct(c));
+//        for (int j = 0; static_cast<std::size_t>(j) < c.size(); ++j)
+//            assert(c[j] == j);
+//        c.push_back(4);
+//        assert(c.size() == 5);
+//        assert(is_contiguous_container_asan_correct(c));
+//        for (int j = 0; static_cast<std::size_t>(j) < c.size(); ++j)
+//            assert(c[j] == j);
+//    }
 //    {
 //        // libc++ needs 15 because it grows by 2x (1 + 2 + 4 + 8).
 //        // Use 17 for implementations that dynamically allocate a container proxy

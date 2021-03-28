@@ -6,7 +6,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-// <algorithm>
+// <algorithms>
 
 // template<InputIterator Iter, Predicate<auto, Iter::value_type> Pred>
 //   requires CopyConstructible<Pred>
@@ -17,8 +17,8 @@
 #include <catch2/catch.hpp>
 #include <cassert>
 
-#include "../support/test_macros.h"
-#include "../support/test_iterators.h"
+#include "test_macros.h"
+#include "test_iterators.h"
 
 namespace test_count_if {
     struct eq {

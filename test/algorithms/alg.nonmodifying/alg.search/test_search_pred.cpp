@@ -6,7 +6,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-// <algorithm>
+// <algorithms>
 
 // template<ForwardIterator Iter1, ForwardIterator Iter2>
 //   requires HasEqualTo<Iter1::value_type, Iter2::value_type>
@@ -17,8 +17,8 @@
 #include "catch2/catch.hpp"
 #include <cassert>
 
-#include "../support/test_macros.h"
-#include "../support/test_iterators.h"
+#include "test_macros.h"
+#include "test_iterators.h"
 
 namespace test_search_pred {
 #if TEST_STD_VER > 17

@@ -6,7 +6,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-// <algorithm>
+// <algorithms>
 
 // template<class ForwardIterator, class Size, class T>
 //   constexpr ForwardIterator     // constexpr after C++17
@@ -17,9 +17,9 @@
 #include "catch2/catch.hpp"
 #include <cassert>
 
-#include "../support/test_macros.h"
-#include "../support/test_iterators.h"
-#include "../support/user_defined_integral.h"
+#include "test_macros.h"
+#include "test_iterators.h"
+#include "user_defined_integral.h"
 
 namespace test_search_n {
 #if TEST_STD_VER > 17

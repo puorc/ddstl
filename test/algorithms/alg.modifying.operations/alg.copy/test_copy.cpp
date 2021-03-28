@@ -18,8 +18,8 @@
 #include <cassert>
 #include "catch2/catch.hpp"
 
-#include "../support/test_macros.h"
-#include "../support/test_iterators.h"
+#include "test_macros.h"
+#include "test_iterators.h"
 
 namespace test_copy {
     template<class InIter, class OutIter>

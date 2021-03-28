@@ -128,14 +128,6 @@ namespace ddstl {
         return last;
     }
 
-    template<class ForwardIt1, class ForwardIt2>
-    ForwardIt1 find_end(ForwardIt1 first, ForwardIt1 last,
-                        ForwardIt2 s_first, ForwardIt2 s_last);
-
-    template<class ForwardIt1, class ForwardIt2, class BinaryPredicate>
-    ForwardIt1 find_end(ForwardIt1 first, ForwardIt1 last,
-                        ForwardIt2 s_first, ForwardIt2 s_last, BinaryPredicate p);
-
     template<class ForwardIt1, class ForwardIt2, class BinaryPredicate>
     bool range_equal_aux(ForwardIt1 first, ForwardIt1 last,
                          ForwardIt2 s_first, ForwardIt2 s_last, BinaryPredicate p) {
@@ -166,6 +158,27 @@ namespace ddstl {
     inline ForwardIt1 search(ForwardIt1 first, ForwardIt1 last,
                              ForwardIt2 s_first, ForwardIt2 s_last) {
         return search(first, last, s_first, s_last, ddstl::iter_bi_equal_functor());
+    }
+
+
+    template<class ForwardIt1, class ForwardIt2, class BinaryPredicate>
+    ForwardIt1 find_end(ForwardIt1 first, ForwardIt1 last,
+                        ForwardIt2 s_first, ForwardIt2 s_last, BinaryPredicate p) {
+        if (s_first == s_last) {
+            return last;
+        }
+        ForwardIt1 result(last);
+        for (; first != last; ++first) {
+            if (range_equal_aux(first, last, s_first, s_last, ddstl::iter_bi_pred_functor<BinaryPredicate>(p))) {
+                result = first;
+            }
+        }
+        return result;
+    }
+
+    template<class ForwardIt1, class ForwardIt2>
+    inline ForwardIt1 find_end(ForwardIt1 first, ForwardIt1 last, ForwardIt2 s_first, ForwardIt2 s_last) {
+        return find_end(first, last, s_first, s_last, ddstl::iter_bi_equal_functor());
     }
 
     template<class ForwardIt, class BinaryPredicate>

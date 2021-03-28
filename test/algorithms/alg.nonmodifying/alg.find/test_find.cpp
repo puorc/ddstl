@@ -6,7 +6,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-// <algorithm>
+// <algorithms>
 
 // template<InputIterator Iter, class T>
 //   requires HasEqualTo<Iter::value_type, T>
@@ -17,8 +17,8 @@
 #include <catch2/catch.hpp>
 #include <cassert>
 
-#include "../support/test_macros.h"
-#include "../support/test_iterators.h"
+#include "test_macros.h"
+#include "test_iterators.h"
 
 #if TEST_STD_VER > 17
 TEST_CONSTEXPR bool test_constexpr() {

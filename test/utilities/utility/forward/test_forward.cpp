@@ -13,7 +13,7 @@
 #include <catch2/catch.hpp>
 #include "utility.h"
 
-#include "../support/test_macros.h"
+#include "test_macros.h"
 
 namespace test_forward {
     struct A {

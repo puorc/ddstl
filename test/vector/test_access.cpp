@@ -21,62 +21,62 @@
 // const_reference back() const;
 // libc++ marks these as 'noexcept' (except 'at')
 
-#include "vector.h"
-#include <cassert>
-#include "../support/test_macros.h"
-#include <catch2/catch.hpp>
-
-namespace test_access {
-    template<class C>
-    C
-    make(int size, int start = 0) {
-        C c;
-        for (int i = 0; i < size; ++i)
-            c.push_back(start + i);
-        return c;
-    }
-}
-
-TEST_CASE("test vector [] and at") {
-    using namespace test_access;
-    SECTION("aaaaresizing bigger changes size and capacity") {
-        using namespace test_access;
-        typedef ddstl::vector<int> C;
-        C c = make<C>(10);
-        LIBCPP_ASSERT_NOEXCEPT(c[0]);
-        LIBCPP_ASSERT_NOEXCEPT(c.front());
-        LIBCPP_ASSERT_NOEXCEPT(c.back());
-        // at() is NOT noexcept
-        ASSERT_SAME_TYPE(C::reference, decltype(c[0]));
-        ASSERT_SAME_TYPE(C::reference, decltype(c.at(0)));
-        ASSERT_SAME_TYPE(C::reference, decltype(c.front()));
-        ASSERT_SAME_TYPE(C::reference, decltype(c.back()));
-        for (int i = 0; i < 10; ++i)
-            assert(c[i] == i);
-        for (int i = 0; i < 10; ++i)
-            assert(c.at(i) == i);
-        assert(c.front() == 0);
-        assert(c.back() == 9);
-    }
-    {
-        typedef ddstl::vector<int> C;
-        const int N = 5;
-        const C c = make<C>(10, N);
-        LIBCPP_ASSERT_NOEXCEPT(c[0]);
-        LIBCPP_ASSERT_NOEXCEPT(c.front());
-        LIBCPP_ASSERT_NOEXCEPT(c.back());
-        // at() is NOT noexcept
-        ASSERT_SAME_TYPE(C::const_reference, decltype(c[0]));
-        ASSERT_SAME_TYPE(C::const_reference, decltype(c.at(0)));
-        ASSERT_SAME_TYPE(C::const_reference, decltype(c.front()));
-        ASSERT_SAME_TYPE(C::const_reference, decltype(c.back()));
-        for (int i = 0; i < 10; ++i)
-            assert(c[i] == N + i);
-        for (int i = 0; i < 10; ++i)
-            assert(c.at(i) == N + i);
-        assert(c.front() == N);
-        assert(c.back() == N + 9);
-    }
+//#include "vector.h"
+//#include <cassert>
+//#include "../support/test_macros.h"
+//#include <catch2/catch.hpp>
+//
+//namespace test_access {
+//    template<class C>
+//    C
+//    make(int size, int start = 0) {
+//        C c;
+//        for (int i = 0; i < size; ++i)
+//            c.push_back(start + i);
+//        return c;
+//    }
+//}
+//
+//TEST_CASE("test vector [] and at") {
+//    using namespace test_access;
+//    SECTION("resizing bigger changes size and capacity") {
+//        using namespace test_access;
+//        typedef ddstl::vector<int> C;
+//        C c = make<C>(10);
+//        LIBCPP_ASSERT_NOEXCEPT(c[0]);
+//        LIBCPP_ASSERT_NOEXCEPT(c.front());
+//        LIBCPP_ASSERT_NOEXCEPT(c.back());
+//        // at() is NOT noexcept
+//        ASSERT_SAME_TYPE(C::reference, decltype(c[0]));
+//        ASSERT_SAME_TYPE(C::reference, decltype(c.at(0)));
+//        ASSERT_SAME_TYPE(C::reference, decltype(c.front()));
+//        ASSERT_SAME_TYPE(C::reference, decltype(c.back()));
+//        for (int i = 0; i < 10; ++i)
+//            assert(c[i] == i);
+//        for (int i = 0; i < 10; ++i)
+//            assert(c.at(i) == i);
+//        assert(c.front() == 0);
+//        assert(c.back() == 9);
+//    }
+//    {
+//        typedef ddstl::vector<int> C;
+//        const int N = 5;
+//        const C c = make<C>(10, N);
+//        LIBCPP_ASSERT_NOEXCEPT(c[0]);
+//        LIBCPP_ASSERT_NOEXCEPT(c.front());
+//        LIBCPP_ASSERT_NOEXCEPT(c.back());
+//        // at() is NOT noexcept
+//        ASSERT_SAME_TYPE(C::const_reference, decltype(c[0]));
+//        ASSERT_SAME_TYPE(C::const_reference, decltype(c.at(0)));
+//        ASSERT_SAME_TYPE(C::const_reference, decltype(c.front()));
+//        ASSERT_SAME_TYPE(C::const_reference, decltype(c.back()));
+//        for (int i = 0; i < 10; ++i)
+//            assert(c[i] == N + i);
+//        for (int i = 0; i < 10; ++i)
+//            assert(c.at(i) == N + i);
+//        assert(c.front() == N);
+//        assert(c.back() == N + 9);
+//    }
 //#if TEST_STD_VER >= 11
 //        {
 //            typedef ddstl::vector<int, min_allocator<int>> C;
@@ -117,4 +117,4 @@ TEST_CASE("test vector [] and at") {
 //            assert(c.back() == N + 9);
 //        }
 //#endif
-}
+//}

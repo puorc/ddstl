@@ -6,7 +6,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-// <algorithm>
+// <algorithms>
 
 // template<InputIterator Iter1, ForwardIterator Iter2,
 //          Predicate<auto, Iter1::value_type, Iter2::value_type> Pred>
@@ -15,12 +15,12 @@
 //   find_first_of(Iter1 first1, Iter1 last1, Iter2 first2, Iter2 last2, Pred pred);
 
 #include "algorithm.h"
-#include "catch2/catch.hpp"
+#include <catch2/catch.hpp>
 #include <functional>
 #include <cassert>
 
-#include "../support/test_macros.h"
-#include "../support/test_iterators.h"
+#include "test_macros.h"
+#include "test_iterators.h"
 
 #if TEST_STD_VER > 17
 constexpr bool test_constexpr() {

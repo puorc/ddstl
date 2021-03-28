@@ -6,7 +6,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-// <utility>
+// <utilities>
 
 // template <class T>
 //     typename conditional
@@ -20,7 +20,7 @@
 #include "utility.h"
 #include <catch2/catch.hpp>
 
-#include "../support/test_macros.h"
+#include "test_macros.h"
 
 namespace test_move_if_noexcept {
     class A {

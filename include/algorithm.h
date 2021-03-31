@@ -10,7 +10,7 @@
 
 namespace ddstl {
     template<bool IsSimple, typename Category>
-    struct _copy {
+    struct copy_aux {
         template<class InputIt, class OutputIt>
         static OutputIt copy(InputIt first, InputIt last, OutputIt d_first) {
             while (first != last) {
@@ -23,7 +23,7 @@ namespace ddstl {
     };
 
     template<>
-    struct _copy<true, std::random_access_iterator_tag> {
+    struct copy_aux<true, std::random_access_iterator_tag> {
         template<class T>
         static T *copy(const T *first, const T *last, T *d_first) {
             std::ptrdiff_t count = last - first;
@@ -43,7 +43,7 @@ namespace ddstl {
                              && std::is_pointer<InputIt>::value
                              && std::is_pointer<OutputIt>::value
                              && std::is_same<IValue, OValue>::value);
-        return _copy<simple, category>::copy(first, last, d_first);
+        return copy_aux<simple, category>::copy(first, last, d_first);
     }
 
     template<class InputIt, class UnaryPredicate>

@@ -30,4 +30,36 @@ namespace ddstl {
     distance(InputIt first, InputIt last) {
         return distance_aux(first, last, typename std::iterator_traits<InputIt>::iterator_category());
     }
+
+    template<class InputIt, class Distance>
+    void advance_aux(InputIt &it, Distance n, std::input_iterator_tag) {
+        while (n > 0) {
+            ++it;
+            --n;
+        }
+    }
+
+    template<class BiDirectionalIt, class Distance>
+    void advance_aux(BiDirectionalIt &it, Distance n, std::bidirectional_iterator_tag) {
+        if (n > 0) {
+            while (n-- > 0) {
+                ++it;
+            }
+        } else {
+            while (n++ < 0) {
+                --it;
+            }
+        }
+    }
+
+    template<class RandomAccessIt, class Distance>
+    void advance_aux(RandomAccessIt &it, Distance n, std::random_access_iterator_tag) {
+        it += n;
+    }
+
+    template<class InputIt, class Distance>
+    inline void advance(InputIt &it, Distance n) {
+        typename std::iterator_traits<InputIt>::difference_type d = n;
+        advance_aux(it, d, typename std::iterator_traits<InputIt>::iterator_category());
+    }
 }

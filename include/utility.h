@@ -28,5 +28,16 @@ namespace ddstl {
     T &&forward(typename std::remove_reference<T>::type &&t) noexcept {
         return static_cast<T &&>(t);
     }
+
+    template<class T>
+    typename std::enable_if<
+            std::is_move_assignable<T>::value && std::is_move_constructible<T>::value>::type
+    swap(T &a, T &b) noexcept(std::is_nothrow_move_assignable<T>::value &&
+                              std::is_nothrow_move_constructible<T>::value) {
+        // FIXME why our own move not working.
+        T temp = std::move(a);
+        a = std::move(b);
+        b = std::move(temp);
+    }
 }
 #endif //MSTL_UTILITY_H

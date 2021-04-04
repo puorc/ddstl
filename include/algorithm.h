@@ -329,6 +329,126 @@ namespace ddstl {
     inline bool next_permutation(BidirIt first, BidirIt last) {
         return next_permutation_aux(first, last, iter_bi_less_functor());
     }
+
+    template<class BidirIt, class Compare>
+    bool prev_permutation_aux(BidirIt first, BidirIt last, Compare comp) {
+        if (first == last) {
+            return false;
+        }
+        BidirIt it = last;
+        --it;
+        if (it == first) {
+            return false;
+        }
+        for (; it != first; --it) {
+            BidirIt prev = it;
+            --prev;
+            if (comp(it, prev)) {
+                break;
+            }
+        }
+        if (it == first) {
+            std::reverse(first, last);
+            return false;
+        } else {
+            BidirIt back = last;
+            --back;
+            --it;
+            for (; back != it; --back) {
+                if (comp(back, it)) {
+                    break;
+                }
+            }
+            swap(*it, *back);
+            ++it;
+            std::reverse(it, last);
+            return true;
+        }
+    }
+
+    template<class BidirIt, class Compare>
+    inline bool prev_permutation(BidirIt first, BidirIt last, Compare comp) {
+        return prev_permutation_aux(first, last, iter_bi_pred_functor<Compare>(comp));
+    }
+
+    template<class BidirIt>
+    inline bool prev_permutation(BidirIt first, BidirIt last) {
+        return prev_permutation_aux(first, last, iter_bi_less_functor());
+    }
+
+    template<class InputIt1, class InputIt2, class Compare>
+    bool lexicographical_compare_aux(InputIt1 first1, InputIt1 last1, InputIt2 first2, InputIt2 last2, Compare comp) {
+        for (; first1 != last1; ++first1, (void) ++first2) {
+            if (first2 == last2) {
+                break;
+            }
+            if (comp(first1, first2)) {
+                return true;
+            }
+            if (*first2 < *first1) {
+                return false;
+            }
+        }
+        return first1 == last1 && first2 != last2;
+    }
+
+    template<class InputIt1, class InputIt2, class Compare>
+    inline bool
+    lexicographical_compare(InputIt1 first1, InputIt1 last1, InputIt2 first2, InputIt2 last2, Compare comp) {
+        return lexicographical_compare_aux(first1, last1, first2, last2, iter_bi_pred_functor<Compare>(comp));
+    }
+
+    template<class InputIt1, class InputIt2>
+    inline bool lexicographical_compare(InputIt1 first1, InputIt1 last1, InputIt2 first2, InputIt2 last2) {
+        return lexicographical_compare_aux(first1, last1, first2, last2, iter_bi_less_functor());
+    }
+
+    template<bool simple>
+    struct equal_aux_struct {
+        template<class InputIt1, class InputIt2>
+        static bool equal(InputIt1 first1, InputIt1 last1, InputIt2 first2) {
+            for (; first1 != last1; ++first1, (void) ++first2) {
+                if (!(*first1 == *first2)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    };
+
+    template<>
+    struct equal_aux_struct<true> {
+        template<class T>
+        static bool equal(T *first1, T *last1, T *first2) {
+            size_t size = last1 - first1;
+            if (size > 0) {
+                return !memcmp(first1, first2, sizeof(T) * size);
+            } else {
+                return true;
+            }
+        }
+    };
+
+    template<class InputIt1, class InputIt2, class BinaryPredicate>
+    bool equal(InputIt1 first1, InputIt1 last1, InputIt2 first2, BinaryPredicate p) {
+        for (; first1 != last1; ++first1, (void) ++first2) {
+            if (!p(*first1, *first2)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    template<class InputIt1, class InputIt2>
+    inline bool equal(InputIt1 first1, InputIt1 last1, InputIt2 first2) {
+        typedef typename std::iterator_traits<InputIt1>::value_type ValueType1;
+        typedef typename std::iterator_traits<InputIt2>::value_type ValueType2;
+        const bool simple = (std::is_integral<ValueType1>::value || std::is_pointer<ValueType1>::value)
+                            && std::is_pointer<InputIt1>::value
+                            && std::is_pointer<InputIt2>::value
+                            && std::is_same<ValueType1, ValueType2>::value;
+        return equal_aux_struct<simple>().equal(first1, last1, first2);
+    }
 }
 
 

@@ -46,6 +46,26 @@ namespace ddstl {
             return v1 == v2;
         }
     };
+
+    struct iter_bi_less_functor {
+        template<typename Iterator1, typename Iterator2>
+        bool operator()(Iterator1 iter1, Iterator2 iter2) {
+            return *iter1 < *iter2;
+        }
+    };
+
+    template<typename Compare, typename Iterator1>
+    struct iter_comp_iter_functor {
+        Compare &m_compare;
+        Iterator1 m_iter1;
+
+        iter_comp_iter_functor(Compare compare, Iterator1 iterator1) : m_compare(compare), m_iter1(iterator1) {}
+
+        template<typename Iterator2>
+        bool operator()(Iterator2 iterator2) {
+            return m_compare(m_iter1, iterator2);
+        }
+    };
 }
 
 #endif //MSTL_OPS_H

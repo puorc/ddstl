@@ -35,7 +35,7 @@ add_executable(mstl
         test/algorithms/alg.nonmodifying/alg.search/test_search_n.cpp
         test/algorithms/alg.nonmodifying/alg.search/test_search_n_pred.cpp
         test/algorithms/alg.nonmodifying/alg.find.end/test_find_end.cpp
-        test/algorithms/alg.nonmodifying/alg.find.end/test_find_end_pred.cpp test/iterators/iterator.primitives/iterator.operations/test_advance.cpp test/utilities/utility/utility.swap/test_swap.cpp)
+        test/algorithms/alg.nonmodifying/alg.find.end/test_find_end_pred.cpp test/iterators/iterator.primitives/iterator.operations/test_advance.cpp test/utilities/utility/utility.swap/test_swap.cpp test/algorithms/alg.modifying.operations/alg.copy/test_copy_n.cpp test/algorithms/alg.nonmodifying/alg.is_permutation/test_is_permutation.cpp test/algorithms/alg.nonmodifying/alg.is_permutation/test_is_permutation_pred.cpp test/algorithms/alg.sorting/alg.permutation.generators/test_next_permutation.cpp test/algorithms/alg.sorting/alg.permutation.generators/test_next_permutation_pred.cpp)
 
 target_include_directories(mstl
         PRIVATE

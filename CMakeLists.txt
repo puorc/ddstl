@@ -35,7 +35,26 @@ add_executable(mstl
         test/algorithms/alg.nonmodifying/alg.search/test_search_n.cpp
         test/algorithms/alg.nonmodifying/alg.search/test_search_n_pred.cpp
         test/algorithms/alg.nonmodifying/alg.find.end/test_find_end.cpp
-        test/algorithms/alg.nonmodifying/alg.find.end/test_find_end_pred.cpp test/iterators/iterator.primitives/iterator.operations/test_advance.cpp test/utilities/utility/utility.swap/test_swap.cpp test/algorithms/alg.modifying.operations/alg.copy/test_copy_n.cpp test/algorithms/alg.nonmodifying/alg.is_permutation/test_is_permutation.cpp test/algorithms/alg.nonmodifying/alg.is_permutation/test_is_permutation_pred.cpp test/algorithms/alg.sorting/alg.permutation.generators/test_next_permutation.cpp test/algorithms/alg.sorting/alg.permutation.generators/test_next_permutation_pred.cpp test/algorithms/alg.sorting/alg.permutation.generators/test_prev_permutation.cpp test/algorithms/alg.sorting/alg.permutation.generators/test_prev_permutation_pred.cpp test/algorithms/alg.sorting/alg.lex.comparison/test_lexicographical_compare.cpp test/algorithms/alg.sorting/alg.lex.comparison/test_lexicographical_compare_pred.cpp test/algorithms/alg.nonmodifying/alg.equal/test_equal.cpp test/algorithms/alg.nonmodifying/alg.equal/test_equal_pred.cpp)
+        test/algorithms/alg.nonmodifying/alg.find.end/test_find_end_pred.cpp 
+        test/iterators/iterator.primitives/iterator.operations/test_advance.cpp 
+        test/utilities/utility/utility.swap/test_swap.cpp 
+        test/algorithms/alg.modifying.operations/alg.copy/test_copy_n.cpp 
+        test/algorithms/alg.nonmodifying/alg.is_permutation/test_is_permutation.cpp 
+        test/algorithms/alg.nonmodifying/alg.is_permutation/test_is_permutation_pred.cpp 
+        test/algorithms/alg.sorting/alg.permutation.generators/test_next_permutation.cpp 
+        test/algorithms/alg.sorting/alg.permutation.generators/test_next_permutation_pred.cpp 
+        test/algorithms/alg.sorting/alg.permutation.generators/test_prev_permutation.cpp 
+        test/algorithms/alg.sorting/alg.permutation.generators/test_prev_permutation_pred.cpp 
+        test/algorithms/alg.sorting/alg.lex.comparison/test_lexicographical_compare.cpp 
+        test/algorithms/alg.sorting/alg.lex.comparison/test_lexicographical_compare_pred.cpp 
+        test/algorithms/alg.nonmodifying/alg.equal/test_equal.cpp 
+        test/algorithms/alg.nonmodifying/alg.equal/test_equal_pred.cpp 
+        test/utilities/smartptr/unique.ptr/unique.ptr.class/pointer_type.pass.cpp 
+        test/utilities/smartptr/unique.ptr/unique.ptr.class/unique.ptr.asgn/move.pass.cpp 
+        test/utilities/smartptr/unique.ptr/unique.ptr.class/unique.ptr.asgn/nullptr.pass.cpp 
+        test/utilities/smartptr/unique.ptr/unique.ptr.class/unique.ptr.asgn/move_convert.pass.cpp
+        test/utilities/utility/pairs/pairs.pair/default.pass.cpp
+        )
 
 target_include_directories(mstl
         PRIVATE

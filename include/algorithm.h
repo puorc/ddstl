@@ -280,7 +280,7 @@ namespace ddstl {
 
     template<class ForwardIt1, class ForwardIt2>
     inline bool is_permutation(ForwardIt1 first1, ForwardIt1 last1, ForwardIt2 first2) {
-        return is_permutation_aux(first1, last1, first2, iter_bi_equal_functor());
+        return is_permutation(first1, last1, first2, iter_bi_equal_functor());
     }
 
     template<class BidirIt, class Compare>

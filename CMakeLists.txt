@@ -54,6 +54,18 @@ add_executable(mstl
         test/utilities/smartptr/unique.ptr/unique.ptr.class/unique.ptr.asgn/nullptr.pass.cpp 
         test/utilities/smartptr/unique.ptr/unique.ptr.class/unique.ptr.asgn/move_convert.pass.cpp
         test/utilities/utility/pairs/pairs.pair/default.pass.cpp
+        test/algorithms/alg.sorting/alg.min.max/max.pass.cpp
+        test/algorithms/alg.sorting/alg.min.max/max_comp.pass.cpp
+        test/algorithms/alg.sorting/alg.min.max/min.pass.cpp
+        test/algorithms/alg.sorting/alg.min.max/max_element.pass.cpp
+        test/algorithms/alg.sorting/alg.min.max/max_init_list.cpp
+        test/algorithms/alg.sorting/alg.min.max/max_init_list_comp.pass.cpp
+        test/algorithms/alg.sorting/alg.min.max/min_comp.pass.cpp
+        test/algorithms/alg.sorting/alg.min.max/min_element.pass.cpp
+        test/algorithms/alg.sorting/alg.min.max/min_element_comp.pass.cpp
+        test/algorithms/alg.sorting/alg.min.max/min_init_list.pass.cpp
+        test/algorithms/alg.sorting/alg.min.max/min_init_list_comp.pass.cpp
+        test/algorithms/alg.modifying.operations/alg.reverse/reverse.pass.cpp
         )
 
 target_include_directories(mstl

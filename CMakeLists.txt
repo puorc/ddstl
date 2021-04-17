@@ -66,6 +66,12 @@ add_executable(mstl
         test/algorithms/alg.sorting/alg.min.max/min_init_list.pass.cpp
         test/algorithms/alg.sorting/alg.min.max/min_init_list_comp.pass.cpp
         test/algorithms/alg.modifying.operations/alg.reverse/reverse.pass.cpp
+        test/algorithms/alg.sorting/alg.heap.operations/is.heap/is_heap.pass.cpp
+        test/algorithms/alg.sorting/alg.heap.operations/is.heap/is_heap_comp.pass.cpp
+        test/algorithms/alg.sorting/alg.heap.operations/push.heap/push_heap.pass.cpp
+        test/algorithms/alg.sorting/alg.heap.operations/push.heap/push_heap_comp.pass.cpp
+        test/algorithms/alg.sorting/alg.heap.operations/pop.heap/pop_heap.pass.cpp
+        test/algorithms/alg.sorting/alg.heap.operations/pop.heap/pop_heap_comp.pass.cpp
         )
 
 target_include_directories(mstl

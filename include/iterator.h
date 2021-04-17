@@ -1,8 +1,6 @@
 #ifndef MSTL_ITERATOR_H
 #define MSTL_ITERATOR_H
 
-#endif //MSTL_ITERATOR_H
-
 #include <iterator>
 #include <type_traits>
 #include <vector>
@@ -63,3 +61,5 @@ namespace ddstl {
         advance_aux(it, d, typename std::iterator_traits<InputIt>::iterator_category());
     }
 }
+
+#endif //MSTL_ITERATOR_H

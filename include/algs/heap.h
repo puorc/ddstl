@@ -47,39 +47,79 @@ namespace ddstl
         return ddstl::is_heap_until(first, last, comp) == last;
     }
 
-    template <class RandomIt, class Compare, class Distance>
-    void push_heap_aux(RandomIt first, Distance n, Compare comp)
+    template <class RandomIt, class Compare, class Distance, class Value>
+    void sift_up(RandomIt first, Distance bound, Distance child, Value v, Compare comp)
     {
-        if (n == 0)
+        // swaps could be avoided to improve perf.
+        Distance parent = ((child - 1) / 2);
+        while (bound < child && comp(first + parent, v))
+        {
+            *(first + child) = ddstl::move(*(first + parent));
+            child = parent;
+            parent = ((child - 1) / 2);
+        }
+        *(first + child) = ddstl::move(v);
+    }
+
+    template <class RandomIt, class Compare>
+    inline void push_heap(RandomIt first, RandomIt last, Compare comp)
+    {
+        typedef typename std::iterator_traits<RandomIt>::difference_type DistanceType;
+        if (first == last)
         {
             return;
         }
-        Distance child = n - 1;
-        while (child > 0)
+        sift_up(first, DistanceType(0), ddstl::distance(first, last) - 1, ddstl::move(*(last - 1)), iter_bi_less_val_functor<Compare>(comp));
+    }
+
+    template <class RandomIt>
+    inline void push_heap(RandomIt first, RandomIt last)
+    {
+        typedef typename std::iterator_traits<RandomIt>::difference_type DistanceType;
+        if (first == last)
         {
-            Distance parent = ((child - 1) >> 1);
-            if (comp(first + parent, first + child))
+            return;
+        }
+        sift_up(first, DistanceType(0), ddstl::distance(first, last) - 1, ddstl::move(*(last - 1)), iter_bi_less_val_const_functor());
+    }
+
+    template <class RandomIt, class Compare, class Distance>
+    void siftDown(RandomIt first, Distance n, Distance parent, Compare comp)
+    {
+        while (parent < n)
+        {
+            Distance lchild = parent * 2 + 1;
+            Distance rchild = lchild + 1;
+            if (lchild < n && rchild < n)
             {
-                ddstl::iter_swap(first + parent, first + child);
-                child = parent;
+                Distance large = comp(first + lchild, first + rchild) ? rchild : lchild;
+                if (comp(first + parent, first + large))
+                {
+                    ddstl::iter_swap(first + parent, first + large);
+                    parent = large;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            else if (lchild < n)
+            {
+                if (comp(first + parent, first + lchild))
+                {
+                    ddstl::iter_swap(first + parent, first + lchild);
+                    parent = lchild;
+                }
+                else
+                {
+                    break;
+                }
             }
             else
             {
                 break;
             }
         }
-    }
-
-    template <class RandomIt, class Compare>
-    inline void push_heap(RandomIt first, RandomIt last, Compare comp)
-    {
-        push_heap_aux(first, ddstl::distance(first, last), iter_bi_pred_functor<Compare>(comp));
-    }
-
-    template <class RandomIt>
-    inline void push_heap(RandomIt first, RandomIt last)
-    {
-        push_heap_aux(first, ddstl::distance(first, last), iter_bi_less_functor());
     }
 
     template <class RandomIt, class Compare, class Distance>
@@ -139,6 +179,57 @@ namespace ddstl
     inline void pop_heap(RandomIt first, RandomIt last)
     {
         pop_heap_aux(first, ddstl::distance(first, last), iter_bi_less_functor());
+    }
+
+    template <class RandomIt, class Compare, class Distance>
+    void make_heap_aux(RandomIt first, Distance n, Compare comp)
+    {
+        if (n < 2)
+        {
+            return;
+        }
+        Distance parent = (n - 2) / 2;
+        while (true)
+        {
+            siftDown(first, n, parent, comp);
+            if (parent == 0)
+            {
+                return;
+            }
+            --parent;
+        }
+    }
+
+    template <class RandomIt, class Compare>
+    inline void make_heap(RandomIt first, RandomIt last, Compare comp)
+    {
+        make_heap_aux(first, ddstl::distance(first, last), iter_bi_pred_functor<Compare>(comp));
+    }
+
+    template <class RandomIt>
+    inline void make_heap(RandomIt first, RandomIt last)
+    {
+        make_heap_aux(first, ddstl::distance(first, last), iter_bi_less_functor());
+    }
+
+    template <class RandomIt, class Compare>
+    inline void sort_heap(RandomIt first, RandomIt last, Compare comp)
+    {
+        while (last - first > 1)
+        {
+            ddstl::pop_heap(first, last, comp);
+            --last;
+        }
+    }
+
+    template <class RandomIt>
+    inline void sort_heap(RandomIt first, RandomIt last)
+    {
+        while (last - first > 1)
+        {
+            ddstl::pop_heap(first, last);
+            --last;
+        }
     }
 }
 

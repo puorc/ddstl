@@ -84,7 +84,7 @@ namespace ddstl
     }
 
     template <class RandomIt, class Compare, class Distance>
-    void siftDown(RandomIt first, Distance n, Distance parent, Compare comp)
+    void sift_down(RandomIt first, Distance n, Distance parent, Compare comp)
     {
         while (parent < n)
         {
@@ -132,41 +132,7 @@ namespace ddstl
         ddstl::iter_swap(first, first + (n - 1));
         Distance parent = 0;
         --n;
-
-        while (parent < n)
-        {
-            Distance lchild = parent * 2 + 1;
-            Distance rchild = lchild + 1;
-            if (lchild < n && rchild < n)
-            {
-                Distance large = comp(first + lchild, first + rchild) ? rchild : lchild;
-                if (comp(first + parent, first + large))
-                {
-                    ddstl::iter_swap(first + parent, first + large);
-                    parent = large;
-                }
-                else
-                {
-                    break;
-                }
-            }
-            else if (lchild < n)
-            {
-                if (comp(first + parent, first + lchild))
-                {
-                    ddstl::iter_swap(first + parent, first + lchild);
-                    parent = lchild;
-                }
-                else
-                {
-                    break;
-                }
-            }
-            else
-            {
-                break;
-            }
-        }
+        sift_down(first, n, parent, comp);
     }
 
     template <class RandomIt, class Compare>
@@ -191,7 +157,7 @@ namespace ddstl
         Distance parent = (n - 2) / 2;
         while (true)
         {
-            siftDown(first, n, parent, comp);
+            sift_down(first, n, parent, comp);
             if (parent == 0)
             {
                 return;

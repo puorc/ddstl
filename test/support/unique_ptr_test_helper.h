@@ -26,8 +26,6 @@ struct A {
     virtual ~A() { --count; }
 };
 
-int A::count = 0;
-
 struct B : public A {
     static int count;
 
@@ -37,8 +35,6 @@ struct B : public A {
 
     virtual ~B() { --count; }
 };
-
-int B::count = 0;
 
 template<class T>
 typename std::enable_if<!std::is_array<T>::value, T *>::type

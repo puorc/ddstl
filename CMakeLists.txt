@@ -76,6 +76,33 @@ add_executable(mstl
         test/algorithms/alg.sorting/alg.heap.operations/make.heap/make_heap_comp.pass.cpp
         test/algorithms/alg.sorting/alg.heap.operations/sort.heap/sort_heap.pass.cpp
         test/algorithms/alg.sorting/alg.heap.operations/sort.heap/sort_heap_comp.pass.cpp
+        test/containers/container.adaptors/priority.queue/types.pass.cpp
+        test/containers/container.adaptors/priority.queue/priqueue.members/emplace.pass.cpp
+        test/containers/Emplaceable.h
+        test/containers/container.adaptors/priority.queue/priqueue.members/empty.pass.cpp
+        test/containers/container.adaptors/priority.queue/priqueue.members/pop.pass.cpp
+        test/containers/container.adaptors/priority.queue/priqueue.members/push.pass.cpp
+        test/containers/container.adaptors/priority.queue/priqueue.members/push_rvalue.pass.cpp
+        test/containers/container.adaptors/priority.queue/priqueue.members/size.pass.cpp
+        test/containers/container.adaptors/priority.queue/priqueue.members/top.pass.cpp
+        test/containers/container.adaptors/priority.queue/priqueue.members/swap.pass.cpp
+        test/containers/container.adaptors/priority.queue/priqueue.cons/assign_copy.pass.cpp
+        test/containers/container.adaptors/priority.queue/priqueue.cons/assign_move.pass.cpp
+        test/containers/container.adaptors/priority.queue/priqueue.cons/ctor_comp.pass.cpp
+        test/containers/container.adaptors/priority.queue/priqueue.cons/ctor_comp_container.pass.cpp
+        test/containers/container.adaptors/priority.queue/priqueue.cons/ctor_comp_rcontainer.pass.cpp
+        test/containers/container.adaptors/priority.queue/priqueue.cons/ctor_copy.pass.cpp
+        test/containers/container.adaptors/priority.queue/priqueue.cons/ctor_default.pass.cpp
+        test/support/test_allocator.cpp
+        test/support/min_allocator.cpp
+        test/support/deleter_types.cpp
+        test/support/unique_ptr_test_helper.cpp
+        test/containers/container.adaptors/priority.queue/priqueue.cons/ctor_iter_iter.pass.cpp
+        test/containers/container.adaptors/priority.queue/priqueue.cons/ctor_iter_iter_comp.pass.cpp
+        test/containers/container.adaptors/priority.queue/priqueue.cons/ctor_iter_iter_comp_cont.pass.cpp
+        test/containers/container.adaptors/priority.queue/priqueue.cons/ctor_iter_iter_comp_rcont.pass.cpp
+        test/containers/container.adaptors/priority.queue/priqueue.cons/ctor_move.pass.cpp
+        test/containers/container.adaptors/priority.queue/priqueue.cons/dtor_noexcept.pass.cpp
         )
 
 target_include_directories(mstl

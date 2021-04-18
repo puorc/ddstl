@@ -3,7 +3,6 @@
 
 #include <iterator>
 #include <type_traits>
-#include <vector>
 
 namespace ddstl {
     template<class InputIt>

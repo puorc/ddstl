@@ -26,14 +26,17 @@
 // #include "deleter_types.h"
 // #include "unique_ptr_test_helper.h"
 
-// namespace move_pass_cpp {
+// namespace move_pass_cpp
+// {
 
-//     struct GenericDeleter {
+//     struct GenericDeleter
+//     {
 //         void operator()(void *) const;
 //     };
 
-//     template<bool IsArray>
-//     void test_basic() {
+//     template <bool IsArray>
+//     void test_basic()
+//     {
 //         typedef typename std::conditional<IsArray, A[], A>::type VT;
 //         const int expect_alive = IsArray ? 5 : 1;
 //         {
@@ -48,10 +51,10 @@
 //         }
 //         assert(A::count == 0);
 //         {
-//             ddstl::unique_ptr<VT, Deleter<VT> > s1(newValue<VT>(expect_alive),
-//                                                    Deleter<VT>(5));
+//             ddstl::unique_ptr<VT, Deleter<VT>> s1(newValue<VT>(expect_alive),
+//                                                   Deleter<VT>(5));
 //             A *p = s1.get();
-//             ddstl::unique_ptr<VT, Deleter<VT> > s2(newValue<VT>(expect_alive));
+//             ddstl::unique_ptr<VT, Deleter<VT>> s2(newValue<VT>(expect_alive));
 //             assert(A::count == (expect_alive * 2));
 //             s2 = std::move(s1);
 //             assert(s2.get() == p);
@@ -77,8 +80,9 @@
 //         assert(A::count == 0);
 //     }
 
-//     template<bool IsArray>
-//     void test_sfinae() {
+//     template <bool IsArray>
+//     void test_sfinae()
+//     {
 //         typedef typename std::conditional<IsArray, int[], int>::type VT;
 //         {
 //             typedef ddstl::unique_ptr<VT> U;
@@ -111,15 +115,15 @@
 //     }
 // }
 
-
-// TEST_CASE("test unique_ptr move pass", "") {
+// TEST_CASE("test unique_ptr move pass", "")
+// {
 //     using namespace move_pass_cpp;
 //     {
 //         test_basic</*IsArray*/ false>();
 //         test_sfinae<false>();
 //     }
-// //    {
-// //        test_basic</*IsArray*/ true>();
-// //        test_sfinae<true>();
-// //    }
+//     //    {
+//     //        test_basic</*IsArray*/ true>();
+//     //        test_sfinae<true>();
+//     //    }
 // }

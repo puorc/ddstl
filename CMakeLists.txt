@@ -75,6 +75,7 @@ add_executable(mstl
         test/algorithms/alg.sorting/alg.heap.operations/make.heap/make_heap.pass.cpp
         test/algorithms/alg.sorting/alg.heap.operations/make.heap/make_heap_comp.pass.cpp
         test/algorithms/alg.sorting/alg.heap.operations/sort.heap/sort_heap.pass.cpp
+        test/algorithms/alg.sorting/alg.heap.operations/sort.heap/sort_heap_comp.pass.cpp
         )
 
 target_include_directories(mstl

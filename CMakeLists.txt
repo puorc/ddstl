@@ -103,6 +103,19 @@ add_executable(mstl
         test/containers/container.adaptors/priority.queue/priqueue.cons/ctor_iter_iter_comp_rcont.pass.cpp
         test/containers/container.adaptors/priority.queue/priqueue.cons/ctor_move.pass.cpp
         test/containers/container.adaptors/priority.queue/priqueue.cons/dtor_noexcept.pass.cpp
+        test/algorithms/alg.sorting/alg.merge/merge.pass.cpp
+        test/algorithms/alg.sorting/alg.merge/merge_comp.pass.cpp
+        test/algorithms/alg.sorting/alg.set.operations/includes/include.pass.cpp
+        test/algorithms/alg.sorting/alg.set.operations/includes/includes_comp.pass.cpp
+        test/algorithms/alg.sorting/alg.set.operations/set.difference/set_difference.pass.cpp
+        test/algorithms/alg.sorting/alg.set.operations/set.difference/set_difference_comp.pass.cpp
+        test/algorithms/alg.sorting/alg.set.operations/set.intersection/set_intersection.pass.cpp
+        test/algorithms/alg.sorting/alg.set.operations/set.intersection/set_intersection_comp.pass.cpp
+        test/algorithms/alg.sorting/alg.set.operations/set.symmetric.difference/set_symmetric_difference.pass.cpp
+        test/algorithms/alg.sorting/alg.set.operations/set.symmetric.difference/set_symmetric_difference_comp.pass.cpp
+        test/algorithms/alg.sorting/alg.set.operations/set.union/set_union.pass.cpp
+        test/algorithms/alg.sorting/alg.set.operations/set.union/set_union_comp.pass.cpp
+        test/algorithms/alg.sorting/alg.set.operations/set.union/set_union_move.pass.cpp
         )
 
 target_include_directories(mstl

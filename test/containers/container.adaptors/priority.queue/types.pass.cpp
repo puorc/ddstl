@@ -70,5 +70,5 @@ TEST_CASE("test pq types pass", "")
     static_assert((std::is_same<ddstl::priority_queue<int, std::deque<int>, std::greater<int>>::value_compare, std::greater<int>>::value), "");
     // static_assert((std::uses_allocator<ddstl::priority_queue<int>, std::allocator<int>>::value), "");
     // static_assert((!std::uses_allocator<ddstl::priority_queue<int, C>, std::allocator<int>>::value), "");
-    // test t;
+    test t;
 }

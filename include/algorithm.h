@@ -7,5 +7,7 @@
 #include <algs/minmax.h>
 #include <algs/comparison.h>
 #include <algs/heap.h>
+#include <algs/merge.h>
+#include <algs/set.h>
 
 #endif //MSTL_ALGORITHM_H

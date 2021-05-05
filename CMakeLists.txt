@@ -116,6 +116,19 @@ add_executable(mstl
         test/algorithms/alg.sorting/alg.set.operations/set.union/set_union.pass.cpp
         test/algorithms/alg.sorting/alg.set.operations/set.union/set_union_comp.pass.cpp
         test/algorithms/alg.sorting/alg.set.operations/set.union/set_union_move.pass.cpp
+        test/utilities/utility/pairs/pairs.pair/trivial_copy_move.pass.cpp
+        test/utilities/utility/pairs/pairs.pair/special_member_generation_test.pass.cpp
+        test/utilities/utility/pairs/pairs.pair/move_ctor.pass.cpp
+        test/utilities/utility/pairs/pairs.pair/dtor.pass.cpp
+        test/utilities/utility/pairs/pairs.pair/copy_ctor.pass.cpp
+        test/utilities/utility/pairs/pairs.pair/default-sfinae.pass.cpp
+        test/utilities/utility/pairs/pairs.pair/rv_pair_U_V.pass.cpp
+        test/utilities/utility/pairs/pairs.pair/assign_const_pair_U_V.pass.cpp
+        test/utilities/utility/pairs/pairs.pair/assign_pair.pass.cpp
+        test/utilities/utility/pairs/pairs.pair/assign_rv_pair.pass.cpp
+        test/utilities/utility/pairs/pairs.pair/assign_rv_pair_U_V.pass.cpp
+        test/utilities/utility/pairs/pairs.pair/const_first_const_second.pass.cpp
+        test/utilities/utility/pairs/pairs.pair/types.pass.cpp
         )
 
 target_include_directories(mstl

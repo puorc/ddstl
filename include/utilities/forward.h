@@ -34,6 +34,9 @@ namespace ddstl
     }
 
     template <class T>
+    typename std::add_rvalue_reference<T>::type declval() noexcept;
+
+    template <class T>
     typename std::enable_if<
         std::is_move_assignable<T>::value && std::is_move_constructible<T>::value>::type
     swap(T &a, T &b) noexcept(std::is_nothrow_move_assignable<T>::value &&

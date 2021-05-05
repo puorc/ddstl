@@ -102,20 +102,12 @@ namespace ddstl
             ddstl::swap(first, other.first);
             ddstl::swap(second, other.second);
         }
-
-    private:
-        //         pair &operator=(pair &&other) noexcept
-        // {
-        //     first = other.first;
-        //     second = other.second;
-        //     return *this;
-        // }
     };
 
     template <class T1, class T2>
-    pair<std::decay<T1>, std::decay<T2>> make_pair(T1 &&t, T2 &&u)
+    inline pair<typename std::decay<T1>::type, typename std::decay<T2>::type> make_pair(T1 &&t, T2 &&u)
     {
-        return pair<T1, T2>(ddstl::forward<T1>(t), ddstl::forward<T2>(u));
+        return ddstl::pair<typename std::decay<T1>::type, typename std::decay<T2>::type>(ddstl::forward<T1>(t), ddstl::forward<T2>(u));
     }
 }
 

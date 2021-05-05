@@ -129,6 +129,8 @@ add_executable(mstl
         test/utilities/utility/pairs/pairs.pair/assign_rv_pair_U_V.pass.cpp
         test/utilities/utility/pairs/pairs.pair/const_first_const_second.pass.cpp
         test/utilities/utility/pairs/pairs.pair/types.pass.cpp
+        test/utilities/utility/declval/declval.pass.cpp
+        test/utilities/utility/pairs/pairs.spec/make_pair.pass.cpp
         )
 
 target_include_directories(mstl
